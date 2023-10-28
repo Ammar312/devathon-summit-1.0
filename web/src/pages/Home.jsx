@@ -7,6 +7,8 @@ import { baseURL } from "../core";
 import { Link } from "react-router-dom";
 import hamicon from "../images/hamicon.png";
 import pic from "../images/pic.jpg";
+import Categories from "../components/Categories";
+import DoctorProfile from "../components/DoctorProfile";
 
 const Home = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -34,8 +36,8 @@ const Home = () => {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
-              <Link to={`/profile/${state.user._id}`}>Profile</Link>
+              {/* <Link to="/">Home</Link>
+              <Link to={`/profile/${state.user._id}`}>Profile</Link> */}
             </li>
           </ul>
         </nav>
@@ -48,23 +50,25 @@ const Home = () => {
         Logout
       </button>
 
-      <div className="w-full bg-purple-300 p-6 rounded-b-3xl">
+      <div className="w-full bg-purple-300 p-6 rounded-b-[50px]">
         <div className="flex justify-between ">
           <div className=" w-48 h-0">
             <img src={hamicon} alt="" />
           </div>
           <div className="w-14">
-            <img src={pic} alt="" className="rounded-2xl" />
+            <Link to={`/profile/${state.user._id}`}>
+              <img src={pic} alt="" className="rounded-2xl" />
+            </Link>
           </div>
         </div>
-        <p className="text-white text-lg">Welcome Back</p>
+        <p className="text-white text-lg mb-6">Welcome Back</p>
         <p className="text-white text-3xl md:text-6xl mb-8">
           Let's Find <br /> your top doctor!
         </p>
         <p className="text-6xl text-white">Doctor's Inn</p>
       </div>
-
-      <div>{JSON.stringify(state)}</div>
+      <Categories />
+      <DoctorProfile />
     </div>
   );
 };
