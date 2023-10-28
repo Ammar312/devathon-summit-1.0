@@ -13,7 +13,8 @@ const Login = () => {
     e.preventDefault();
     const email = inputRef.current[0].value;
     const password = inputRef.current[1].value;
-
+    console.log(email);
+    console.log(password);
     try {
       const response = await axios.post(
         `${baseURL}api/v1/login`,

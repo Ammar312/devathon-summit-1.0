@@ -27,8 +27,7 @@ router.post("/login", async (req, res, next) => {
         const token = Jwt.sign(
           {
             isAdmin: result.isAdmin,
-            firstName: result.firstName,
-            lastName: result.lastName,
+            fullName: result.fullName,
             email: req.body.email,
             _id: result._id,
           },
@@ -46,8 +45,7 @@ router.post("/login", async (req, res, next) => {
           message: "Login Successfully",
           data: {
             isAdmin: result.isAdmin,
-            firstName: result.firstName,
-            lastName: result.lastName,
+            fullName: result.fullName,
             email: req.body.email,
             _id: result._id,
           },

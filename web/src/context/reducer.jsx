@@ -1,15 +1,10 @@
 export const reducer = (state, action) => {
   switch (action.type) {
     case "USER_LOGIN": {
-      if (
-        action.payload?.firstName &&
-        action.payload?.lastName &&
-        action.payload?.email
-      ) {
+      if (action.payload?.fullName && action.payload?.email) {
         const role = action.payload?.isAdmin ? "admin" : "user";
         const user = {
-          firstName: action.payload?.firstName,
-          lastName: action.payload?.lastName,
+          fullName: action.payload?.fullName,
           email: action.payload?.email,
           _id: action.payload?._id,
         };

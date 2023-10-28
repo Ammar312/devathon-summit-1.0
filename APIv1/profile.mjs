@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 import { client } from "../mongodb.mjs";
 import { ObjectId } from "mongodb";
-const db = client.db("socialapp");
+const db = client.db("devathon");
 const dbCollection = db.collection("users");
 
 const getProfile = async (req, res, next) => {
@@ -21,8 +21,7 @@ const getProfile = async (req, res, next) => {
       message: "Profile fetched",
       data: {
         isAdmin: result.isAdmin,
-        firstName: result.firstName,
-        lastName: result.lastName,
+        fullName: result.fullName,
         email: result.email,
         _id: result._id,
       },

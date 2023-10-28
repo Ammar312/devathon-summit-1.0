@@ -5,6 +5,8 @@ import { GlobalContext } from "../context/context";
 import axios from "axios";
 import { baseURL } from "../core";
 import { Link } from "react-router-dom";
+import hamicon from "../images/hamicon.png";
+import pic from "../images/pic.jpg";
 
 const Home = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -38,14 +40,30 @@ const Home = () => {
           </ul>
         </nav>
       ) : null}
-      <Bar />
+
       <button
         onClick={logoutHandle}
         className="p-1 m-2 border-2 border-blue-400 text-blue-500 cursor-pointer"
       >
         Logout
       </button>
-      <CreatePost />
+
+      <div className="w-full bg-purple-300 p-6 rounded-b-3xl">
+        <div className="flex justify-between ">
+          <div className=" w-48 h-0">
+            <img src={hamicon} alt="" />
+          </div>
+          <div className="w-14">
+            <img src={pic} alt="" className="rounded-2xl" />
+          </div>
+        </div>
+        <p className="text-white text-lg">Welcome Back</p>
+        <p className="text-white text-3xl md:text-6xl mb-8">
+          Let's Find <br /> your top doctor!
+        </p>
+        <p className="text-6xl text-white">Doctor's Inn</p>
+      </div>
+
       <div>{JSON.stringify(state)}</div>
     </div>
   );
