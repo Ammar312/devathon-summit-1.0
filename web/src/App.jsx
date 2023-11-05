@@ -7,6 +7,7 @@ import axios from "axios";
 import { GlobalContext } from "./context/context";
 import { baseURL } from "./core";
 import Profile from "./pages/Profile";
+import { BounceLoader } from "react-spinners";
 
 const App = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -66,7 +67,7 @@ const App = () => {
 
       {state.isLogin === null ? (
         <div>
-          <h1>Loading</h1>
+          <BounceLoader color="#36d7b7" />
         </div>
       ) : null}
     </BrowserRouter>
