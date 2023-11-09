@@ -32,47 +32,35 @@ const Home = () => {
   };
   return (
     <div>
-      {state.isLogin === true && state.user.person === "doctor" ? (
-        <div>
-          <button
-            onClick={logoutHandle}
-            className="p-1 m-2 border-2 border-blue-400 text-blue-500 cursor-pointer"
-          >
-            Logout
-          </button>
+      <div>
+        <button
+          onClick={logoutHandle}
+          className="p-1 m-2 border-2 border-blue-400 text-blue-500 cursor-pointer"
+        >
+          Logout
+        </button>
 
-          <div className="w-full bg-purple-300 p-6 rounded-b-[50px]">
-            <div className="flex justify-between ">
-              <div className=" w-48 h-0">
-                <img src={hamicon} alt="" />
-              </div>
-              <div className="w-14">
-                <Link to={`/profile/${state.user._id}`}>
-                  <img src={pic} alt="" className="rounded-full" />
-                </Link>
-              </div>
+        <div className="w-full bg-purple-300 p-6 rounded-b-[50px]">
+          <div className="flex justify-between ">
+            <div className=" w-48 h-0">
+              <img src={hamicon} alt="" />
             </div>
-            <p className="text-white text-lg mb-6">Welcome Back</p>
-            <p className="text-white text-3xl md:text-6xl mb-8">
-              Let's Find <br /> your top doctor!
-            </p>
-            <p className="text-6xl text-white">Doctor's Inn</p>
+            <div className="w-14">
+              <Link to={`/profile/${state.user._id}`}>
+                <img src={pic} alt="" className="rounded-full" />
+              </Link>
+            </div>
           </div>
-          <Categories />
-          <DoctorProfile />
-          <div>{JSON.stringify(state)}</div>
+          <p className="text-white text-lg mb-6">Welcome Back</p>
+          <p className="text-white text-3xl md:text-6xl mb-8">
+            Let's Find <br /> your top doctor!
+          </p>
+          <p className="text-6xl text-white">Doctor's Inn</p>
         </div>
-      ) : (
-        <div>
-          Doctor login
-          <button
-            onClick={logoutHandle}
-            className="p-1 m-2 border-2 border-blue-400 text-blue-500 cursor-pointer"
-          >
-            Logout
-          </button>
-        </div>
-      )}
+        <Categories />
+        <DoctorProfile />
+        <div>{JSON.stringify(state)}</div>
+      </div>
     </div>
   );
 };

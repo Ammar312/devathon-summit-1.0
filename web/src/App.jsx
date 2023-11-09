@@ -8,6 +8,7 @@ import { GlobalContext } from "./context/context";
 import { baseURL } from "./core";
 import Profile from "./pages/Profile";
 import { BounceLoader } from "react-spinners";
+import DoctorPage from "./pages/DoctorPage";
 
 const App = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -46,11 +47,47 @@ const App = () => {
     };
     checkLoginStatus();
   }, []);
+
+  const logoutHandle = async () => {
+    try {
+      const response = await axios.post(
+        `${baseURL}api/v1/logout`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      dispatch({
+        type: "USER_LOGOUT",
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <BrowserRouter>
-      {state.isLogin === true ? (
+      {state.isLogin === true && state.user.person === "patient" ? (
         <Routes>
           <Route path="/" element={<Home />} />
+          {/* <Route path="profile" element={<Profile />} /> */}
+          <Route path={`profile/:userId`} element={<Profile />} />
+          <Route path="*" element={<Navigate to="/" replace={true} />} />
+        </Routes>
+      ) : null}
+      {state.isLogin === true && state.user.person === "doctor" ? (
+        <Routes>
+          <Route path="/" element={<DoctorPage />} />
+          {/* <div>
+            Doctor login
+            <button
+              onClick={logoutHandle}
+              className="p-1 m-2 border-2 border-blue-400 text-blue-500 cursor-pointer"
+            >
+              Logout
+            </button>
+            <div>{JSON.stringify(state)}</div>
+          </div> */}
           {/* <Route path="profile" element={<Profile />} /> */}
           <Route path={`profile/:userId`} element={<Profile />} />
           <Route path="*" element={<Navigate to="/" replace={true} />} />
